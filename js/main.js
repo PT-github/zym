@@ -68,6 +68,16 @@ $(document).ready(function(){
     $('.swiper-button-next').bind('click',function(){
         swiperV.slideNext();
     });
+    $('#pmenu').bind('click',function(){
+        $('.menu-container').addClass('menu-active');
+    });
+    $('body').bind('click',function(e){
+        var target = e.target;
+        var box = $('.right-con')[0];
+        if(!box.contains(target) && target.className.indexOf('menu') === -1){
+            $('.menu-container').removeClass('menu-active');
+        }
+    })
 });
 function hideLoading(){
     $('.loading').addClass('loading-hide');
