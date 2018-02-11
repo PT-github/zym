@@ -82,3 +82,23 @@ $(document).ready(function(){
 function hideLoading(){
     $('.loading').addClass('loading-hide');
 }
+
+function formatHnm(obj) {
+    if(obj.__emptyHintEl){
+        if(obj.value == obj.__emptyHintEl.innerHTML)
+            return;
+    }
+    str = obj.value.replace(/[ ]/g, "");
+    if (str.length > 22) {
+        obj.value = str.substr(0, 22);
+    }
+    obj.value = obj.value.replace(/\D/g, '').replace(/\s/g, '').replace(
+        /(\d{5})(?=\d)/g, "$1 ");
+}
+function commOnKeyPress_(e, sType, oElement, iLength){
+    if(13 == window.event.keyCode){
+        validate();
+        return false;
+    }
+    return commOnKeyPress(e, sType, oElement, iLength);
+}
